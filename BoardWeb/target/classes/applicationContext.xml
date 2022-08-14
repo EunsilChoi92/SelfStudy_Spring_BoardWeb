@@ -61,6 +61,13 @@
 	
 	<!-- <bean> 등록을 하지 않고 자동으로 생성 
 		이 설정을 추가하면 스프링 컨테이너는 클래스 패스에 있는 클래스들을 스캔하여 @Component가 설정된 클래스들을 자동으로 객체 생성함 -->
-	<context:component-scan base-package="polymorphism"></context:component-scan>
+	<!-- <context:component-scan base-package="polymorphism"></context:component-scan> -->
+	<context:component-scan base-package="com.springbook.biz"></context:component-scan>
+	
+	<bean id="userService" class="com.springbook.biz.user.impl.UserServiceImpl">
+		<property name="userDAO" ref="userDAO"/>
+	</bean>
+	
+	<bean id="userDAO" class="com.springbook.biz.user.impl.UserDAO"/>
 	
 </beans>
