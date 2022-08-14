@@ -1,6 +1,16 @@
 package polymorphism;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component("tv")	// <bean id="tv" class="polymorphysm.LgTV"/> 과 같음
 public class LgTV implements TV {
+	
+	@Autowired
+//	@Qualifier("apple")
+//	@Resourse(name="apple") // @Autowired + @Qualifier - java가 제공하는 기능
+	private Speaker speaker;
+	
 	@Override
 	public void powerOn() {
 		System.out.println("LgTV -- 전원 켠다.");
@@ -14,13 +24,13 @@ public class LgTV implements TV {
 
 	@Override
 	public void volumeUp() {
-		System.out.println("LgTV -- 소리 올린다.");
+		speaker.volumeUp();
 		
 	}
 
 	@Override
 	public void volumeDown() {
-		System.out.println("LgTV -- 소리 내린다.");
+		speaker.volumeDown();
 		
 	}
 }
