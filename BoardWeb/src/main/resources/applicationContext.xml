@@ -8,6 +8,14 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.2.xsd">
 
+	<!-- <bean> 등록을 하지 않고 자동으로 생성 
+		이 설정을 추가하면 스프링 컨테이너는 클래스 패스에 있는 클래스들을 스캔하여 @Component가 설정된 클래스들을 자동으로 객체 생성함 -->
+	<!-- <context:component-scan base-package="polymorphism"></context:component-scan> -->
+	<context:component-scan base-package="com.springbook.biz"></context:component-scan>
+	
+	<!-- 어노테이션으로 AOP를 설정하기 위한 선언 -->
+	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
+	
 	<!-- <bean id="tv" class="polymorphism.SamsungTV" init-method="initMethod" destroy-method="destroyMethod"/> -->
 	
 	<!-- <bean id="tv" class="polymorphism.SamsungTV">
@@ -59,18 +67,13 @@
 	</bean> -->
 	
 	
-	<!-- <bean> 등록을 하지 않고 자동으로 생성 
-		이 설정을 추가하면 스프링 컨테이너는 클래스 패스에 있는 클래스들을 스캔하여 @Component가 설정된 클래스들을 자동으로 객체 생성함 -->
-	<!-- <context:component-scan base-package="polymorphism"></context:component-scan> -->
-	<context:component-scan base-package="com.springbook.biz"></context:component-scan>
-	
 	<bean id="userService" class="com.springbook.biz.user.impl.UserServiceImpl">
 		<property name="userDAO" ref="userDAO"/>
 	</bean>
 	
 	<bean id="userDAO" class="com.springbook.biz.user.impl.UserDAO"/>
 	
-	<bean id="log" class="com.springbook.biz.common.LogAdvice"></bean>
+	<!-- <bean id="log" class="com.springbook.biz.common.LogAdvice"></bean> -->
 	
 	<!-- AOP를 바꾸고 싶다면 여기를 수정하면 됨>
 	<aop:config>
@@ -84,16 +87,17 @@
 	</aop:config>
 	 -->
 	
+	<!--
 	<bean id="before" class="com.springbook.biz.common.BeforeAdvice"/>
 	<bean id="afterReturning" class="com.springbook.biz.common.AfterReturningAdvice"/>
 	<bean id="afterThrowing" class="com.springbook.biz.common.AfterThrowingAdvice"/>
 	<bean id="after" class="com.springbook.biz.common.AfterAdvice"/>
 	
-	<aop:config>
+	 <aop:config>
 		<aop:pointcut id="allPointcut" expression="execution(* com.springbook.biz..*Impl.*(..))"/>
 		<aop:pointcut id="getPointcut" expression="execution(* com.springbook.biz..*Impl.get*(..))"/>
 		
-		<!-- <aop:aspect ref="before">
+		<aop:aspect ref="before">
 			<aop:before pointcut-ref="allPointcut" method="beforeLog"/>
 		</aop:aspect>
 		
@@ -107,8 +111,8 @@
 		
 		<aop:aspect ref="after">
 			<aop:after pointcut-ref="allPointcut" method="finallyLog"/>
-		</aop:aspect> -->
-	</aop:config>
+		</aop:aspect> 
+	</aop:config> 
 	
 	
 	 
@@ -120,7 +124,7 @@
 		<aop:aspect ref="around">
 			<aop:around pointcut-ref="allPointcut" method="aroundLog"/>
 		</aop:aspect>
-	</aop:config>
+	</aop:config> -->
 	 
 	
 </beans>
