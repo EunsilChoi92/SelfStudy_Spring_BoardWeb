@@ -6,10 +6,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 public class JDBCUtil {
+	
 	public static Connection getConnection() {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			return DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "orcl", "gjf278znl");
+			String url = "jdbc:oracle:thin:@localhost:1521:orcl";
+			return DriverManager.getConnection(url, "orcl", "gjf278znl");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
