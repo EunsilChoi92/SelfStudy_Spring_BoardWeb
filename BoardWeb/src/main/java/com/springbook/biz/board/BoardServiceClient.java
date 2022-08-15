@@ -5,6 +5,9 @@ import java.util.List;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.GenericXmlApplicationContext;
 
+import com.springbook.biz.user.UserService;
+import com.springbook.biz.user.UserVO;
+
 public class BoardServiceClient {
 	public static void main(String[] args) {
 		// 1. Spring 컨테이너를 구동
@@ -15,16 +18,16 @@ public class BoardServiceClient {
 		
 		// 3. 글 등록 기능 테스트
 		BoardVO vo = new BoardVO();
-//		vo.setTitle("임시 제목2");
-//		vo.setWriter("마이꼴");
-//		vo.setContent("임시 내용2 .....");
-//		boardService.insertBoard(vo);
+		vo.setTitle("3임시 제목3");
+		vo.setWriter("탈룰라");
+		vo.setContent("3임시 내용3 .....");
+		boardService.insertBoard(vo);
 		
 		// 4. 글 목록 검색 기능 테스트
 		List<BoardVO> boardList = boardService.getBoardList(vo);
 		for(BoardVO board : boardList) {
 			System.out.println("--->" + board.toString());
-		}
+		}		
 		
 		// 5. Spring 컨테이너 종료
 		container.close();
