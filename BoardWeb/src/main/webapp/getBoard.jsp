@@ -41,7 +41,7 @@
 	<tr>
 		<td bgcolor="orange">작성자</td>
 		<td align="left">
-			<input name="title" type="text" value="<%= board.getWriter() %>"/>
+			<input name="writer" type="text" value="<%= board.getWriter() %>"/>
 		</td>
 	</tr>
 	<tr>
@@ -53,13 +53,13 @@
 	<tr>
 		<td bgcolor="orange">등록일</td>
 		<td align="left">
-			<input name="title" type="text" value="<%= board.getRegDate() %>"/>
+			<input name="regDate" type="text" value="<%= board.getRegDate() %>"/>
 		</td>
 	</tr>
 	<tr>
 		<td bgcolor="orange">조회수</td>
 		<td align="left">
-			<input name="title" type="text" value="<%= board.getCnt() %>"/>
+			<input name="cnt" type="text" value="<%= board.getCnt() %>"/>
 		</td>
 	</tr>
 	<tr>

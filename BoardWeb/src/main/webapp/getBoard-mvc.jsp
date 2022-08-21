@@ -22,9 +22,7 @@
 	</tr>
 	<tr>
 		<td bgcolor="orange">작성자</td>
-		<td align="left">
-			<input name="title" type="text" value="${board.writer }"/>
-		</td>
+		<td align="left">${board.writer }</td>
 	</tr>
 	<tr>
 		<td bgcolor="orange">내용</td>
@@ -34,15 +32,11 @@
 	</tr>
 	<tr>
 		<td bgcolor="orange">등록일</td>
-		<td align="left">
-			<input name="title" type="text" value="${board.regDate }"/>
-		</td>
+		<td align="left">${board.regDate }</td>
 	</tr>
 	<tr>
 		<td bgcolor="orange">조회수</td>
-		<td align="left">
-			<input name="title" type="text" value="${board.cnt }"/>
-		</td>
+		<td align="left">${board.cnt }</td>
 	</tr>
 	<tr>
 		<td colspan="2" align="center">

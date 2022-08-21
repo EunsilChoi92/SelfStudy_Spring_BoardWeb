@@ -1,9 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
 
-	<!-- HandlerMapping 등록 -->
+
+	<!-- 컴포넌트 스캔 설정 -->
+	<!-- 모든 Controller 클래스가 스캔 범위에 포함되도록 함 -->
+	<context:component-scan base-package="com.springbook.view"></context:component-scan>
+
+	<!-- 
+	
+	어노테이션을 이용한 설정을 위해 삭제
+	
+	HandlerMapping 등록 
 	<bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
 		<property name="mappings">
 			<props>
@@ -19,14 +30,14 @@
 		</property>
 	</bean>
 	
-	<!-- ViewResolver 등록 -->
+	ViewResolver 등록
 	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/board/"></property>
 		<property name="suffix" value=".jsp"></property>
 	</bean>
 	
 	
-	<!-- Controller 등록 -->
+	Controller 등록
 	<bean id="login" class="com.springbook.view.user.LoginController"></bean>
 	<bean id="getBoardList" class="com.springbook.view.boad.GetBoardListController"></bean>
 	<bean id="getBoard" class="com.springbook.view.boad.GetBoardController"></bean>
@@ -34,4 +45,6 @@
 	<bean id="updateBoard" class="com.springbook.view.boad.UpdateBoardController"></bean>
 	<bean id="deleteBoard" class="com.springbook.view.boad.DeleteBoardController"></bean>
 	<bean id="logout" class="com.springbook.view.user.LogoutController"></bean>
+	
+	 -->
 </beans>
