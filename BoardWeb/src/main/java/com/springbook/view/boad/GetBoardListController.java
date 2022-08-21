@@ -6,14 +6,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.Controller;
+
 import com.springbook.biz.board.BoardVO;
 import com.springbook.biz.board.impl.BoardDAO;
-import com.springbook.view.controller.Controller;
 
 public class GetBoardListController implements Controller {
 
 	@Override
-	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
+	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) {
 	
 		System.out.println("글 목록 검색 처리");
 		
@@ -24,10 +26,14 @@ public class GetBoardListController implements Controller {
 		List<BoardVO> boardList = boardDAO.getBoardList(vo);
 		
 		//3. 응답 화면 구성			
-		HttpSession session = request.getSession();
-		session.setAttribute("boardList", boardList);
+//		HttpSession session = request.getSession();
+//		session.setAttribute("boardList", boardList);
 		
-		return "getBoardList-mvc";
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("boardList", boardList);
+		mav.setViewName("getBoardList-mvc");
+		
+		return mav;
 	}
 
 }
