@@ -3,6 +3,7 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee https://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
 
+	<!-- 인코딩 설정 -->
 	<filter>
 		<filter-name>characterEncoding</filter-name>
 		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
@@ -21,6 +22,20 @@
 		<servlet-name>action</servlet-name>
 		<servlet-class>com.springbook.view.controller.DispatcherServlet</servlet-class>
 	</servlet> -->
+		
+		
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:applicationContext.xml</param-value>
+	</context-param>
+	
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	
+	
+
+	<!-- Bootstraps the root web application context before servlet initialization -->
 	
 	<servlet>
 		<servlet-name>action</servlet-name>
@@ -35,4 +50,5 @@
 		<servlet-name>action</servlet-name>
 		<url-pattern>*.do</url-pattern>
 	</servlet-mapping>
+
 </web-app>
