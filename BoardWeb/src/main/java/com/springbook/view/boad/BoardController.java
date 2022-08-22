@@ -3,6 +3,7 @@ package com.springbook.view.boad;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,9 +11,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.springbook.biz.board.BoardListVO;
 import com.springbook.biz.board.BoardService;
 import com.springbook.biz.board.BoardVO;
 import com.springbook.biz.board.impl.BoardDAO;
@@ -23,6 +26,32 @@ public class BoardController {
 	
 	@Autowired
 	private BoardService boardService;
+
+//	//JSON 변환
+//	@RequestMapping("/dataTransform.do")
+//	@ResponseBody	//자바 객체를 HTTP 응답 프로토콜의 몸체료 변환하기 위해 사용됨
+//	public List<BoardVO> dataTransform(BoardVO vo) {
+//		vo.setSearchCondition("TITLE");
+//		vo.setSearchKeyword("");
+//		List<BoardVO> boardList = boardService.getBoardList(vo);
+//		return boardList;
+//	}
+	
+	
+	//XML 변환
+	@RequestMapping("/dataTransform.do")
+	@ResponseBody	//자바 객체를 HTTP 응답 프로토콜의 몸체료 변환하기 위해 사용됨
+	public BoardListVO dataTransform(BoardVO vo) {
+		vo.setSearchCondition("TITLE");
+		vo.setSearchKeyword("");
+		List<BoardVO> boardList = boardService.getBoardList(vo);
+		BoardListVO boardListVO = new BoardListVO();
+		boardListVO.setBoardList(boardList);
+		return boardListVO;
+	}
+	
+	
+	
 	
 	//글 등록
 	@RequestMapping(value="/insertBoard.do")

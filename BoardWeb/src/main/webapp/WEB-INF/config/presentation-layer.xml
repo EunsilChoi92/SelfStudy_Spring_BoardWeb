@@ -12,6 +12,11 @@
 	<!-- 모든 Controller 클래스가 스캔 범위에 포함되도록 함 -->
 	<context:component-scan base-package="com.springbook.view"></context:component-scan>
 	
+	<!-- HttpMessageConvert를 구현한 모든 변환기가 생성됨 -> XML 변환에 필요한 변환기도 지동으로 등록됨
+								-> MappingJackson2HttpMessageConvert 변환기를 생성해서 사용할 예정 
+								-> 이 설정은 Jaxb2RootElementHttpMessageConvert도 같이 등록해줌 -->
+	<!-- DAY-4 Class07 데이터 변환 -->
+	<mvc:annotation-driven></mvc:annotation-driven>
 	
 	<!-- 파일 업로드 설정  -->
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
